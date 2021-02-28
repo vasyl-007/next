@@ -4,15 +4,15 @@ import MainLayout from "./components/MainLayout";
 
 const Index = () => {
   return (
-    <MainLayout>
+    <MainLayout title="Home Page">
       <Head>
         <title>Next JS</title>
-        <meta name="keywords" content="next, js, javascript, react" />
+        {/* <meta name="keywords" content="next, js, javascript, react" />
         <meta
           name="description"
           content="this is tutorial course about next js"
         />
-        <meta charSet="utf-8" />
+        <meta charSet="utf-8" /> */}
       </Head>
       <h1>Hello Next.js</h1>
       <p>

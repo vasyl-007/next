@@ -3,7 +3,7 @@ import MainLayout from "./components/MainLayout";
 
 const Posts = () => {
   return (
-    <MainLayout>
+    <MainLayout title="Posts page">
       <Head>
         <title>Posts page next</title>
       </Head>
