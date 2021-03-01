@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import MainLayout from "./components/MainLayout";
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   // const [posts, setPosts] = useState();
 
   // useEffect(() => {
@@ -20,8 +21,17 @@ const Posts = () => {
         <title>Posts page next</title>
       </Head>
       <h1>Posts page</h1>
-      {/* <ul></ul> */}
-      <pre>{JSON.stringify([], null, 2)}</pre>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <Link href={`/post/[id]`} as={`/post/${post.id}`}>
+              {post.title}
+            </Link>
+            {/* <Link href={`/post/${post.id}`}>{post.title}</Link> */}
+          </li>
+        ))}
+      </ul>
+      {/* <pre>{JSON.stringify([], null, 2)}</pre> */}
       {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
       {/* <pre>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis
@@ -33,6 +43,15 @@ const Posts = () => {
       </pre> */}
     </MainLayout>
   );
+};
+
+Posts.getInitialProps = async () => {
+  const res = await fetch("http://localhost:4200/posts");
+  const allPosts = await res.json();
+
+  return {
+    posts: allPosts,
+  };
 };
 
 // post
